@@ -3,7 +3,6 @@ FROM python:latest
  
 # Copie du fichier
 COPY ./app-python/ /app/
-COPY ./run-app.sh /app/run-app.sh
 
 #Définition du dossier de travail
 WORKDIR /app
@@ -21,4 +20,3 @@ RUN wget https://dlm.mariadb.com/2678579/Connectors/c/connector-c-3.3.3/mariadb-
 ENV LD_PRELOAD=/usr/lib/mariadb/libmariadb.so
 ENV LD_LIBRARY_PATH=/usr/lib/mariadb
 RUN pip3 install flask mariadb
-
