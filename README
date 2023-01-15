@@ -1,0 +1,9 @@
+Programme d'installation application python.
+
+Pour lancer l'installation, executer le script 'install-run.sh'
+cmd > bash install-run.sh
+
+Dans un premier temps le script va executer le fichier 'yml/docker-compose.yml'
+pour installer et démarrer les conteneurs python et mariadb.
+
+Dans un deuxième temps vous aurez le choix de lancer l'application ou non.

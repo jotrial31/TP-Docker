@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: mariadb
+    hostname: mariadb
+    image: jotrial31/img-mariadb
+    restart: always
+    networks:
+      network1:
+        ipv4_address: 172.18.0.3
+    volumes:
+      - db-volume:/var/lib/mysql
+  app:
+    container_name: python
+    hostname: python
+    image: jotrial31/img-python
+    restart: always
+    extra_hosts:
+      - "mariadb:172.18.0.3"
+    networks:
+      network1:
+        ipv4_address: 172.18.0.4
+    tty: true
+networks:
+  network1:
+    name: network_app
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+          - subnet: 172.18.0.0/24
+            gateway: 172.18.0.1
+volumes:
+  db-volume:

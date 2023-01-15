@@ -1,0 +1,17 @@
+# image mariadb
+FROM mariadb
+
+# copy du script sql dans le répertoire auto 
+COPY ./create_structure.sql /docker-entrypoint-initdb.d/create_structure.sql
+
+# déclaration des variables
+ENV MYSQL_USER=testuser
+ENV MYSQL_PASSWORD=testpassword
+ENV MYSQL_ROOT_PASSWORD=rootpassword
+ENV MYSQL_DATABASE=parc_informatique
+
+# Exposition du port sql par defaut
+EXPOSE 3306
+
+# lancement service mysql
+CMD ["mysqld"]
